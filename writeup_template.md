@@ -118,13 +118,15 @@ My final model results were:
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-- ANS: The LeNet architecture was chosen at first because it was famous for classifying grayscaled images.
+ANS: The LeNet architecture was chosen at first because it was famous for classifying grayscaled images.
 * What were some problems with the initial architecture?
-- ANS: The original training accuracy and validation accuracy were not high enough. 
+ANS: The original training accuracy and validation accuracy were not high enough. 
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+ANS: A dropout layer is added after the 1st fully connected layer which boosted both the training accuracy and validation accuracy. In addition, a LeNet based architecture which takes RGB images was tested but failed to give high training and validation accuracy. Feeding grayscaled images is adopted instead.
 * Which parameters were tuned? How were they adjusted and why?
+ANS: Paramters that were tested include the hyperparameters mu, sigma, keep_prob, EPOCHS and learning rate. At the end, keep_prob is tuned to be 0.5 and EPOCHS is set to be 80.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
+ANS: A dropout layer is helpful in terms of preventing the neural network from getting overfitting. 
 If a well known architecture was chosen:
 * What architecture was chosen?
 * Why did you believe it would be relevant to the traffic sign application?
