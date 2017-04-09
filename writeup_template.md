@@ -17,6 +17,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
+[image0]: ./report_images/original.png "Original"
 [image1]: ./report_images/bar_plot.png "Visualization of the training set"
 [image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
 [image3]: ./report_images/grayscale.png "Grayscaling"
@@ -59,20 +60,25 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
+To begin with, the original plotted images in the training set are as below.
+
+![alt_text][image0]
+
 As a first step, the images are equalized on their color histograms to sharpen the contrast. 
 
-Here is an example of a traffic sign image after histogram equalization.
+Here is an example of traffic sign images after histogram equalization.
 
 ![alt_text][image2]
 
 Then a convertion from RGB to grayscale is performed based on the finding in Yann LeCun's paper "Traffic Sign Recognition with Multi-Scale Convolutional Networks" that traffic sign detection accuracy was improved by ignoring the color information in the images. This effect is also observed when training the neural network in this project. 
 
-Here is an example of a traffic sign image after grayscaling.
+Here is an example of traffic sign images after grayscaling.
 
 ![alt text][image3]
 
 As a last step, I normalized the image data because it is considered to be helpful for smoothing the noises in the images. However, the difference between the non-normalized and normalized images is trivial in this case, and this might be due to the histogram equalization process performed in advance. 
 
+Here is an example of traffic signs images after normalization.
 ![alt_test][image4]
 
 I didn't generate or augment the existing data set because the achieved validation accuracy is above 93%. But it is known that the neural network can be better trained with a larger training set, which can be obtained by generating more images using various affine transformations. 
