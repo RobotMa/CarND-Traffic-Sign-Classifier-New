@@ -18,14 +18,14 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./report_images/bar_plot.png "Visualization of the training set"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
-[image9]: ./report_images/
+[image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
+[image3]: ./report_images/grayscale.png "Grayscaling"
+[image4]: ./report_images/normalization.png "Normalization"
+[image5]: ./examples/placeholder.png "Traffic Sign 1"
+[image6]: ./examples/placeholder.png "Traffic Sign 2"
+[image7]: ./examples/placeholder.png "Traffic Sign 3"
+[image8]: ./examples/placeholder.png "Traffic Sign 4"
+[image9]: ./examples/placeholder.png "Traffic Sign 5"
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -51,7 +51,7 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the images in the training set with respect to the labels of classes ranging from 0 to 42. 
+Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the images in the training set with respect to the labels of classes ranging from 0 to 42. It can be seen that the type of images are not evenly distributed which might result in different level of accuracy when classifying different images using the trained neural network. 
 
 ![alt text][image1]
 
@@ -61,17 +61,19 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 As a first step, the images are equalized on their color histograms to sharpen the contrast. 
 
-Here is an example of a traffic sign image before and after histogram equalization.
+Here is an example of a traffic sign image after histogram equalization.
 
-![alt_text][image9]
+![alt_text][image2]
 
 Then a convertion from RGB to grayscale is performed based on the finding in Yann LeCun's paper "Traffic Sign Recognition with Multi-Scale Convolutional Networks" that traffic sign detection accuracy was improved by ignoring the color information in the images. This effect is also observed when training the neural network in this project. 
 
-Here is an example of a traffic sign image before and after grayscaling.
+Here is an example of a traffic sign image after grayscaling.
 
-![alt text][image2]
+![alt text][image3]
 
-As a last step, I normalized the image data because ...
+As a last step, I normalized the image data because it is considered to be helpful for smoothing the noises in the images. However, the difference between the non-normalized and normalized images is trivial in this case, and this might be due to the histogram equalization process performed in advance. 
+
+![alt_test][image4]
 
 I didn't generate or augment the existing data set because the achieved validation accuracy is above 93%. But it is known that the neural network can be better trained with a larger training set, which can be obtained by generating more images using various affine transformations. 
 
