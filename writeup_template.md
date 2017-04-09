@@ -85,20 +85,24 @@ I didn't generate or augment the existing data set because the achieved validati
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-My final model consisted of the following layers:
+My final model is pretty much the same as the original LeNet, with the addition of a dropout layer after the 3rd layer. It is consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Input         		| 32x32x1 grayscale image   					| 
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6 	|
+| Activation    		|   											|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 14x14x6   	|
+| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x16	|
+| Activation    		|         								    	|
+| Max pooling			| 2x2 stride, valid padding, outputs 5x5x16		|
+| Flatten				| output 400									|
+| Fully connected       | output 120       				   	    		|
+| Activation            |                                               |
+| Dropout               | 0.5 keepprob                                  |
+| Fully connected       | output 84                                     |
+| Activation            |                                               |
+| Fully connected       | output 43                                     |
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
