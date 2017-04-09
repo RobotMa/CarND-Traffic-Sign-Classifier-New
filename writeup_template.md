@@ -17,7 +17,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
+[image1]: ./report_images/bar_plot.jpg "Visualization of the training set"
 [image2]: ./examples/grayscale.jpg "Grayscaling"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
-
+[image9]: ./report_images/
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -51,7 +51,7 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the images in the training set with respect to the labels of classes ranging from 0 to 42. 
 
 ![alt text][image1]
 
@@ -59,7 +59,13 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, the images are equalized on their color histograms to sharpen the contrast. 
+
+Here is an example of a traffic sign image before and after histogram equalization.
+
+![alt_text][image9]
+
+Then a convertion from RGB to grayscale is performed based on the finding in Yann LeCun's paper "Traffic Sign Recognition with Multi-Scale Convolutional Networks" that traffic sign detection accuracy was improved by ignoring the color information in the images. This effect is also observed when training the neural network in this project. 
 
 Here is an example of a traffic sign image before and after grayscaling.
 
@@ -67,16 +73,7 @@ Here is an example of a traffic sign image before and after grayscaling.
 
 As a last step, I normalized the image data because ...
 
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+I didn't generate or augment the existing data set because the achieved validation accuracy is above 93%. But it is known that the neural network can be better trained with a larger training set, which can be obtained by generating more images using various affine transformations. 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
