@@ -22,11 +22,11 @@ The goals / steps of this project are the following:
 [image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
 [image3]: ./report_images/grayscale.png "Grayscaling"
 [image4]: ./report_images/normalization.png "Normalization"
-[image5]: ./examples/placeholder.png "Traffic Sign 1"
-[image6]: ./examples/placeholder.png "Traffic Sign 2"
-[image7]: ./examples/placeholder.png "Traffic Sign 3"
-[image8]: ./examples/placeholder.png "Traffic Sign 4"
-[image9]: ./examples/placeholder.png "Traffic Sign 5"
+[image5]: ./new_images/construction.jpg "Traffic Sign 1"
+[image6]: ./new_images/no_passing.jpg "Traffic Sign 2"
+[image7]: ./new_images/road_work.jpg "Traffic Sign 3"
+[image8]: ./new_images/speed_limit_20.jpg "Traffic Sign 4"
+[image9]: ./new_images/stop.jpg "Traffic Sign 5"
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -132,6 +132,7 @@ ANS: Paramters that were tested include the hyperparameters mu, sigma, keep_prob
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 ANS: A dropout layer is helpful in terms of preventing the neural network from getting overfitting. 
+
 If a well known architecture was chosen:
 * What architecture was chosen?
 * Why did you believe it would be relevant to the traffic sign application?
@@ -144,8 +145,8 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image5] ![alt text][image6] ![alt text][image7] 
+![alt text][image8] ![alt text][image9]
 
 The first image might be difficult to classify because ...
 
