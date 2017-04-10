@@ -106,7 +106,9 @@ My final model is pretty much the same as the original LeNet, with the addition 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I selected the batch_size = 128, epochs = 80, the AdamOptimizer with learning_rate = 0.001. The basic pipeline follows that of LeNet, while the epochs is increased significantly given the time for the validation and training accuracies to converge. However, epochs = 80 is not the best number of epochs given the current architecture and data set, a larger epochs is highly likely to further improve both the validation and training accuracies.
+To train the model, I selected the batch_size = 128, epochs = 80, the AdamOptimizer with learning_rate = 0.001. The basic pipeline follows that of LeNet, while the epochs is increased significantly given the time for the validation and training accuracies to converge. The number of epochs chosen here is based many trials on training the neural network. It is observed that the converging speed for each trials varies and epochs = 80 is sufficient for the classifier to achieve a
+validation accuracy higher than 93% without overfitting. In order to achieve a near optimal solution, a condition can be set to terminate the for loop for training the neural network if the validation accuracy stops increasing significantly within 10 epochs. A statistical analysis of the number of epochs for performance convergence will also be interesting given a more powerful workstatino with the state of the art GPU which can run tons of simulations within a reasonable amount of
+time.   
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -146,7 +148,13 @@ Here are five German traffic signs that I found on the web:
 
 ![alt text][image5] 
 
-The first image might be difficult to classify because ...
+s can seen in the above images, two road work images are included where the 1st one has sharper contrast and darker background. The edges between the traffic sign and the environment are also fuzzier than those of the 2nd image. This makes the first road work image more difficult to recognize than the second one. 
+
+The speed limit sign is visually clear to human eyes, however, it is tricky to the classifier due to the blocks of single color at the background. One hypothesis is that the black background misled the classifier to think that there are more numbers writting in black in the image, which caused the classifier to recognize 20 km/h as 120 km/h, as shown in section 3.
+
+The no passing image is probably of the worst quality among the five images. The reason for the low success rate of classification is also discussed in section 3. Basically, the actual traffic sign occupies a relatively smaller region and is tilted in the image. 
+
+The stop sign image is of the highest quality among the five. The image is very clear for human eyes and it has a very large area. The trained neural network has a very good performance on classifying this traffic sign.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
