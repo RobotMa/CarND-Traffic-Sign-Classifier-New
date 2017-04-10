@@ -22,12 +22,8 @@ The goals / steps of this project are the following:
 [image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
 [image3]: ./report_images/grayscale.png "Grayscaling"
 [image4]: ./report_images/normalization.png "Normalization"
-[image5]: ./new_images/construction.jpg "Traffic Sign 1"
-[image6]: ./new_images/no_passing.jpg "Traffic Sign 2"
-[image7]: ./new_images/road_work.jpg "Traffic Sign 3"
-[image8]: ./new_images/speed_limit_20.jpg "Traffic Sign 4"
-[image9]: ./new_images/stop.jpg "Traffic Sign 5"
-[image10]: ./report_images/new_image.jpg "New Traffic Sign 1"
+[image5]: ./new_images/new_images_5.png "Five new German traffic signs"
+[image10]: ./report_images/new_image.png "New Image Prediction"
 
 
 ## Rubric Points
@@ -148,8 +144,7 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image5] ![alt text][image6] ![alt text][image7] 
-![alt text][image8] ![alt text][image9]
+![alt text][image5] 
 
 The first image might be difficult to classify because ...
 
