@@ -180,7 +180,7 @@ The second image of speed limit at 20 km/h is mistakenly classified as speed lim
 
 The third image of a different road work is correctly classified with almost 100% accuracy.
 
-The forth image of no passing is mistakenly recognized as speed limit at 60 km/h with a confidence of 70%.
+The forth image of no passing is mistakenly recognized as speed limit at 60 km/h with a confidence of 70%, and no correct prediction is found within the top 5 softmax probabilities. A clos examination reals that the tilt in the new image  might be one of factors causing the incorrect predictions. Another reason can be that most of the no passing images in the training set are very dark while the new image is very bright. That can give the classifier a hard time as well.
 
 The fifth image of stop is correctly classified with a confidence of 100%.
 
