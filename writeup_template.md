@@ -22,7 +22,7 @@ The goals / steps of this project are the following:
 [image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
 [image3]: ./report_images/grayscale.png "Grayscaling"
 [image4]: ./report_images/normalization.png "Normalization"
-[image5]: ./new_images/new_images_5.png "Five new German traffic signs"
+[image5]: ./report_images/new_images_5.png "Five new German traffic signs"
 [image10]: ./report_images/new_image.png "New Image Prediction"
 
 
