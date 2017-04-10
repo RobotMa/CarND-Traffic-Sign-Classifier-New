@@ -27,6 +27,9 @@ The goals / steps of this project are the following:
 [image7]: ./new_images/road_work.jpg "Traffic Sign 3"
 [image8]: ./new_images/speed_limit_20.jpg "Traffic Sign 4"
 [image9]: ./new_images/stop.jpg "Traffic Sign 5"
+[image10]: ./report_images/new_image.jpg "New Traffic Sign 1"
+
+
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -107,14 +110,14 @@ My final model is pretty much the same as the original LeNet, with the addition 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+To train the model, I selected the batch_size = 128, epochs = 80, the AdamOptimizer with learning_rate = 0.001. The basic pipeline follows that of LeNet, while the epochs is increased significantly given the time for the validation and training accuracies to converge. However, epochs = 80 is not the best number of epochs given the current architecture and data set, a larger epochs is highly likely to further improve both the validation and training accuracies.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 99.2%. 
-* validation set accuracy of 93.9%. 
-* test set accuracy of 91.6%. 
+* training set accuracy of 99.0%. 
+* validation set accuracy of 94.6%. 
+* test set accuracy of 92.2%. 
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
@@ -156,31 +159,30 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Speed limit (20km/h)	| Speed limit (30km/h)  						| 
-| Road work    			| Road work     								|
+| Speed limit (20km/h)	| Speed limit (120km/h)  						| 
+| Road work    			| General caution  								|
 | Road work				| Road work										|
-| No passing    		| End of all speed and passing limits			|
+| No passing    		| Speed limit (60km/h)              			|
 | Stop      			| Stop                							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 2 of the 5 traffic signs, which gives an accuracy of 40%. This result is inferior to the test accuracy of 92.2%. However, several trials were performed on retraining the entire network and classifying these five images. The trained classifier can give a maximum of 80% prediction rate. This shows that when the test set is different from the training set (in terms of contrast, clarity, etc), the exisiting network can be unstable. 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+Below is the illustration of the predictions of all five new German traffic images. The softmax probabilities for each prediction are plotted as a horizontal bar plot.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+![alt_text][image10]
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+The first image of road image is mistakenly classified as general caution with a probability over 40%.
 
+The second image of speed limit at 20 km/h is mistakenly classified as speed limit at 120 km/h with a probability of almost 100%. However, the image is also recognized as the corret traffic sign with a very low probability.
 
-For the second image ... 
+The third image of a different road work is correctly classified with almost 100% accuracy.
+
+The forth image of no passing is mistakenly recognized as speed limit at 60 km/h with a confidence of 70%.
+
+The fifth image of stop is correctly classified with a confidence of 100%.
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
