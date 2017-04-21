@@ -1,54 +1,193 @@
-## Project: Build a Traffic Sign Recognition Program
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+# Traffic Sign Recognition 
 
-Overview
+## German Traffic Sign Classification Project Report
+
 ---
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to classify traffic signs. You will train and validate a model so it can classify traffic sign images using the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset). After the model is trained, you will then try out your model on images of German traffic signs that you find on the web.
 
-We have included an Ipython notebook that contains further instructions 
-and starter code. Be sure to download the [Ipython notebook](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb). 
+**Build a Traffic Sign Recognition Project**
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting three files: 
-* the Ipython notebook with the code
-* the code exported as an html file
-* a writeup report either as a markdown or pdf file 
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/481/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used in each step (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
 The goals / steps of this project are the following:
-* Load the data set
+* Load the data set (see below for links to the project data set)
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
-### Dependencies
-This lab requires:
 
-* [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
+[//]: # (Image References)
 
-The lab environment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
+[image0]: ./report_images/original.png "Original"
+[image1]: ./report_images/bar_plot.png "Visualization of the training set"
+[image2]: ./report_images/histogram_equalization.png "Histogram Equalization"
+[image3]: ./report_images/grayscale.png "Grayscaling"
+[image4]: ./report_images/normalization.png "Normalization"
+[image5]: ./report_images/new_images_5.png "Five new German traffic signs"
+[image10]: ./report_images/new_image.png "New Image Prediction"
 
-### Dataset and Repository
 
-1. Download the data set. The classroom has a link to the data set in the "Project Instructions" content. This is a pickled dataset in which we've already resized the images to 32x32. It contains a training, validation and test set.
-2. Clone the project, which contains the Ipython notebook and the writeup template.
-```sh
-git clone https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
-cd CarND-Traffic-Sign-Classifier-Project
-jupyter notebook Traffic_Sign_Classifier.ipynb
-```
+## Rubric Points
+### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
-### Requirements for Submission
-Follow the instructions in the `Traffic_Sign_Classifier.ipynb` notebook and write the project report using the writeup template as a guide, `writeup_template.md`. Submit the project code and writeup document.
+---
+### Writeup / README
+
+#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
+
+You're reading it! and here is a link to my [project code](https://github.com/RobotMa/CarND-Traffic-Sign-Classifier-New)
+
+### Data Set Summary & Exploration
+
+#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+
+I used the Python built-in functions to calculate summary statistics of the traffic
+signs data set:
+
+* The size of training set is 34799 
+* The size of the validation set is 4410
+* The size of test set is 12630
+* The shape of a traffic sign image is 32 x 32 x 3
+* The number of unique classes/labels in the data set is 43
+
+#### 2. Include an exploratory visualization of the dataset.
+
+Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the images in the training set with respect to the labels of classes ranging from 0 to 42. It can be seen that the type of images are not evenly distributed which might result in different level of accuracy when classifying different images using the trained neural network. 
+
+![alt text][image1]
+
+### Design and Test a Model Architecture
+
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+
+To begin with, the original plotted images in the training set are as below.
+
+![alt_text][image0]
+
+As a first step, the images are equalized on their color histograms to sharpen the contrast. 
+
+Here is an example of traffic sign images after histogram equalization.
+
+![alt_text][image2]
+
+Then a convertion from RGB to grayscale is performed based on the finding in Yann LeCun's paper "Traffic Sign Recognition with Multi-Scale Convolutional Networks" that traffic sign detection accuracy was improved by ignoring the color information in the images. This effect is also observed when training the neural network in this project. 
+
+Here is an example of traffic sign images after grayscaling.
+
+![alt text][image3]
+
+As a last step, I normalized the image data because it is considered to be helpful for smoothing the noises in the images. However, the difference between the non-normalized and normalized images is trivial in this case, and this might be due to the histogram equalization process performed in advance. 
+
+Here is an example of traffic signs images after normalization.
+![alt_test][image4]
+
+I didn't generate or augment the existing data set because the achieved validation accuracy is above 93%. But it is known that the neural network can be better trained with a larger training set, which can be obtained by generating more images using various affine transformations. 
+
+#### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+
+My final model is pretty much the same as the original LeNet, with the addition of a dropout layer after the 3rd layer. It is consisted of the following layers:
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 32x32x1 grayscale image   					| 
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6 	|
+| Activation    		|   											|
+| Max pooling	      	| 2x2 stride, valid padding, outputs 14x14x6   	|
+| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x16	|
+| Activation    		|         								    	|
+| Max pooling			| 2x2 stride, valid padding, outputs 5x5x16		|
+| Flatten				| output 400									|
+| Fully connected       | output 120       				   	    		|
+| Activation            |                                               |
+| Dropout               | 0.5 keepprob                                  |
+| Fully connected       | output 84                                     |
+| Activation            |                                               |
+| Fully connected       | output 43                                     |
+
+
+#### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+
+To train the model, I selected the batch_size = 128, epochs = 80, the AdamOptimizer with learning_rate = 0.001. The basic pipeline follows that of LeNet, while the epochs is increased significantly given the time for the validation and training accuracies to converge. The number of epochs chosen here is based many trials on training the neural network. It is observed that the converging speed for each trials varies and epochs = 80 is sufficient for the classifier to achieve a
+validation accuracy higher than 93% without overfitting. In order to achieve a near optimal solution, a condition can be set to terminate the for loop for training the neural network if the validation accuracy stops increasing significantly within 10 epochs. A statistical analysis of the number of epochs for performance convergence will also be interesting given a more powerful workstatino with the state of the art GPU which can run tons of simulations within a reasonable amount of
+time.   
+
+#### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+
+My final model results were:
+* training set accuracy of 99.0%. 
+* validation set accuracy of 94.6%. 
+* test set accuracy of 92.2%. 
+
+If an iterative approach was chosen:
+* What was the first architecture that was tried and why was it chosen?
+
+ANS: The LeNet architecture was chosen at first because it was famous for classifying grayscaled images.
+* What were some problems with the initial architecture?
+
+ANS: The original training accuracy and validation accuracy were not high enough. 
+* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+
+ANS: A dropout layer is added after the 1st fully connected layer which boosted both the training accuracy and validation accuracy. In addition, a LeNet based architecture which takes RGB images was tested but failed to give high training and validation accuracy. Feeding grayscaled images is adopted instead.
+* Which parameters were tuned? How were they adjusted and why?
+
+ANS: Paramters that were tested include the hyperparameters mu, sigma, keep_prob, EPOCHS and learning rate. At the end, keep_prob is tuned to be 0.5 and EPOCHS is set to be 80.
+* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+
+ANS: A dropout layer is helpful in terms of preventing the neural network from getting overfitting. 
+
+If a well known architecture was chosen:
+* What architecture was chosen?
+* Why did you believe it would be relevant to the traffic sign application?
+* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+ 
+
+### Test a Model on New Images
+
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+
+Here are five German traffic signs that I found on the web:
+
+![alt text][image5] 
+
+s can seen in the above images, two road work images are included where the 1st one has sharper contrast and darker background. The edges between the traffic sign and the environment are also fuzzier than those of the 2nd image. This makes the first road work image more difficult to recognize than the second one. 
+
+The speed limit sign is visually clear to human eyes, however, it is tricky to the classifier due to the blocks of single color at the background. One hypothesis is that the black background misled the classifier to think that there are more numbers writting in black in the image, which caused the classifier to recognize 20 km/h as 120 km/h, as shown in section 3.
+
+The no passing image is probably of the worst quality among the five images. The reason for the low success rate of classification is also discussed in section 3. Basically, the actual traffic sign occupies a relatively smaller region and is tilted in the image. 
+
+The stop sign image is of the highest quality among the five. The image is very clear for human eyes and it has a very large area. The trained neural network has a very good performance on classifying this traffic sign.
+
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+
+Here are the results of the prediction:
+
+| Image			        |     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Speed limit (20km/h)	| Speed limit (120km/h)  						| 
+| Road work    			| General caution  								|
+| Road work				| Road work										|
+| No passing    		| Speed limit (60km/h)              			|
+| Stop      			| Stop                							|
+
+
+The model was able to correctly guess 2 of the 5 traffic signs, which gives an accuracy of 40%. This result is inferior to the test accuracy of 92.2%. However, several trials were performed on retraining the entire network and classifying these five images. The trained classifier can give a maximum of 80% prediction rate. This shows that when the test set is different from the training set (in terms of contrast, clarity, etc), the exisiting network can be unstable. 
+
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+
+Below is the illustration of the predictions of all five new German traffic images. The softmax probabilities for each prediction are plotted as a horizontal bar plot.
+
+![alt_text][image10]
+
+The first image of road image is mistakenly classified as general caution with a probability over 40%.
+
+The second image of speed limit at 20 km/h is mistakenly classified as speed limit at 120 km/h with a probability of almost 100%. However, the image is also recognized as the corret traffic sign with a very low probability.
+
+The third image of a different road work is correctly classified with almost 100% accuracy.
+
+The forth image of no passing is mistakenly recognized as speed limit at 60 km/h with a confidence of 70%, and no correct prediction is found within the top 5 softmax probabilities. A clos examination reals that the tilt in the new image  might be one of factors causing the incorrect predictions. Another reason can be that most of the no passing images in the training set are very dark while the new image is very bright. That can give the classifier a hard time as well.
+
+The fifth image of stop is correctly classified with a confidence of 100%.
+
+### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
+#### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+
+
